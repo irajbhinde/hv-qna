@@ -1,8 +1,10 @@
 import { useQuestion } from "../context/question-context";
+import { useNavigate } from "react-router-dom";
 
 export default function ResultsPage() {
-  const { questionState } = useQuestion();
+  const { questionState, questionDispatch } = useQuestion();
   const { questionAnswerData, checkboxData } = questionState;
+  const navigate = useNavigate();
   return (
     <div style={{ textAlign: "center" }} className="results-page">
       <h1>Results Page</h1>
@@ -19,11 +21,21 @@ export default function ResultsPage() {
           <>
             <p>Question : {ques.question}</p>
             {ques.selectedOption.answersChecked.map((ans) => {
-              return <span>Selected Answer : {ans} </span>;
+              return <p>Selected Answer : {ans} </p>;
             })}
           </>
         );
       })}
+      <div>
+        <button
+          onClick={() => {
+            navigate("/");
+            questionDispatch({ type: "CLEAR_ALL" });
+          }}
+        >
+          Return to Home Page
+        </button>
+      </div>
     </div>
   );
 }

@@ -11,6 +11,12 @@ export const questionReducer = (state, action) => {
         ...state,
         checkboxData: [...state.checkboxData, payload],
       };
+    case "CLEAR_ALL":
+      return {
+        ...state,
+        checkboxData: [],
+        questionAnswerData: [],
+      };
     default:
       return state;
   }
