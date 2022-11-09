@@ -6,6 +6,11 @@ export const questionReducer = (state, action) => {
         ...state,
         questionAnswerData: [...state.questionAnswerData, payload],
       };
+    case "CHECKBOX_DATA":
+      return {
+        ...state,
+        checkboxData: [...state.checkboxData, payload],
+      };
     default:
       return state;
   }
