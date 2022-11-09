@@ -5,7 +5,7 @@ const QuestionContext = createContext(null);
 const useQuestion = () => useContext(QuestionContext);
 const QuestionProvider = ({children}) => {
     const [questionState,questionDispatch] = useReducer(questionReducer,{
-        questionData : []
+        questionAnswerData : []
     })
     return(
         <QuestionContext.Provider value={{questionState, questionDispatch}} >
